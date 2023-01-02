@@ -1,16 +1,22 @@
 extends NPC
 
-var player_name
+var state:Dictionary
 
 func _ready():
+	state = GameState.get(name)
 	set_speaker_name("Bob")
-	set_conversation_starter("Hi my name is Bob.  Who are you?")
+	conversation_starter()
+
+func conversation_starter():
+	var player_name = state.get("player_name")
+	if player_name: set_conversation_starter("Hi " + player_name)
+	else: set_conversation_starter("Hi my name is Bob.  Who are you?")
 
 func player_said(said):
-	if not player_name:
-		player_name = said
-		set_conversation_starter("Hi " + player_name)
-		say("Hi " + player_name + ", what can I do for you?")
+	if not state.has("player_name"):
+		state["player_name"] = said
+		conversation_starter()
+		say("Hi " + state["player_name"] + ".  Did you know that I've been trapped in this dungeon for years and years?  There's been so many things come in here but no one ever leaves.\n\nWhat can I do for you?")
 	else:
 		player_asked(said)
 

@@ -3,6 +3,13 @@ class_name NPC
 
 var conversation_starter = "Hello"
 var speaker_name = "Name"
+var base:BaseCharacter
+
+func _ready():
+	base = GameState.get(name, "base-character")
+	if not base:
+		base = BaseCharacter.new()
+		GameState.get(name)["base-character"] = base
 
 func set_speaker_name(name:String):
 	speaker_name = name
@@ -33,7 +40,7 @@ func say_in_parts(parts:Array):
 	$d/Conversation/More.visible = true
 	for i in parts.size():
 		$d/Conversation/SpeakerText.text = parts[i]
-		if (i < parts.size()): yield($d/Conversation/More, "pressed")
+		if (i < parts.size()-1): yield($d/Conversation/More, "pressed")
 	reset_text_box()
 
 func player_said(text:String):

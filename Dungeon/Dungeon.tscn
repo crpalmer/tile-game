@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://Dungeon/Dungeon.gd" type="Script" id=2]
-[ext_resource path="res://Characters/NPC/TestNPC.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/NPC/DungeonGreeter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dungeon/Tileset.png" type="Texture" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Dungeon/circle-128.png" type="Texture" id=6]
@@ -813,4 +813,4 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 131067, 0, 0 )
 
-[node name="TestNPC" parent="." instance=ExtResource( 3 )]
+[node name="DungeonGreeter" parent="." instance=ExtResource( 3 )]

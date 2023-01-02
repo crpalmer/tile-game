@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Characters/NPC/TestNPC.gd" type="Script" id=1]
+[ext_resource path="res://Characters/NPC/DungeonGreeter.gd" type="Script" id=1]
 [ext_resource path="res://Characters/NPC/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Images/fairy.png" type="Texture" id=3]
 
@@ -8,8 +8,11 @@
 radius = 17.0
 height = 44.0
 
-[node name="TestNPC" instance=ExtResource( 2 )]
+[node name="DungeonGreeter" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+
+[node name="Conversation" parent="d" index="0"]
+visible = false
 
 [node name="More" parent="d/Conversation" index="6"]
 visible = false

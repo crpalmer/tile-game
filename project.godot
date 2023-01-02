@@ -35,6 +35,10 @@ _global_script_class_icons={
 config/name="tile-game"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameState="*res://Characters/GameState.gd"
+
 [display]
 
 window/size/width=1280
