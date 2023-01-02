@@ -9,17 +9,17 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "KinematicBody2D",
 "class": "BaseCharacter",
 "language": "GDScript",
 "path": "res://Characters/BaseCharacter.gd"
 }, {
-"base": "Area2D",
+"base": "BaseCharacter",
 "class": "NPC",
 "language": "GDScript",
 "path": "res://Characters/NPC/NPC.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "BaseCharacter",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Characters/Player.gd"
@@ -39,6 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="tile-game"
+run/main_scene="res://Dungeon/Dungeon.tscn"
 config/icon="res://icon.png"
 
 [autoload]

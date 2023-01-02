@@ -3,8 +3,8 @@ extends NPC
 var last_was_name = false
 
 func _ready():
-	set_speaker_name("New Guy")
-	set_conversation_starter("Hello.  You found me!")
+	speaker_name = "New Guy"
+	conversation_starter = "Hello.  You found me!"
 
 func player_said(text):
 	var words = tokenize(text)

@@ -1,17 +1,12 @@
-extends KinematicBody2D
+extends BaseCharacter
 class_name Player
 
 signal collided_with
+signal entered
+signal exited
 
-export var speed = 128
-var attack_available = true
-var base:BaseCharacter
-
-func _ready():
-	base = GameState.get_base_character(name)
-	if not base:
-		base = BaseCharacter.new()
-		GameState.set_base_character(name, base)
+func _init():
+	GameState.player = self
 
 func _process(delta):
 	process_movement(delta)
@@ -31,10 +26,17 @@ func process_movement(delta):
 func process_attack():
 	if attack_available and Input.is_action_pressed("attack"):
 		var who = $TrackingArea.who_is_in_area()
-		if who: 
-			GameState.attack(self, who)
-			$AttackTimer.start()
-			attack_available = false
+		if who: attack(who)
+			
+func _on_TrackingArea_entered(who):
+	if GameState.player != self:
+		print_debug("not me!")
+	emit_signal("entered", who)
 
-func _on_AttackTimer_timeout():
-	attack_available = true
+func _on_TrackingArea_exited(who):
+	emit_signal("exited", who)
+
+func died():
+	GameState.player = null
+	print_debug("Player died!")
+	queue_free()

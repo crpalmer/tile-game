@@ -4,13 +4,13 @@ var state:Dictionary
 
 func _ready():
 	state = GameState.get(name)
-	set_speaker_name("Bob")
+	speaker_name = "Bob"
 	conversation_starter()
 
 func conversation_starter():
 	var player_name = state.get("player_name")
-	if player_name: set_conversation_starter("Hi " + player_name)
-	else: set_conversation_starter("Hi my name is Bob.  Who are you?")
+	if player_name: conversation_starter = "Hi " + player_name
+	else: conversation_starter = "Hi my name is Bob.  Who are you?"
 
 func player_said(said):
 	if not state.has("player_name"):
@@ -30,6 +30,3 @@ func player_asked(said:String):
 		say("I hear that the temple even sent one person to Canada!!!")
 	else:
 		player_said_default(words)
-
-func _on_Player_collided_with():
-	start_conversation()

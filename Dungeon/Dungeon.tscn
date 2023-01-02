@@ -788,9 +788,10 @@ format = 1
 tile_data = PoolIntArray( 131067, 0, 0 )
 
 [node name="DungeonGreeter" parent="." instance=ExtResource( 3 )]
+position = Vector2( 85, 60 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 2 )
+position = Vector2( 1, -28 )
 
 [node name="NewGuy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 266, 353 )
