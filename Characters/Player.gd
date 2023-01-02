@@ -3,6 +3,7 @@ class_name Player
 
 func _init():
 	GameState.player = self
+	hp = 20
 
 func _process(delta):
 	process_movement(delta)
@@ -15,9 +16,7 @@ func process_movement(delta):
 	if Input.is_action_pressed("up"): dir.y -= 1
 	if Input.is_action_pressed("down"): dir.y += 1
 	
-	var collision = move_and_collide(dir*speed*delta)
-	if collision:
-		emit_signal("collided_with", collision)
+	move_and_collide(dir*speed*delta)
 
 func process_attack():
 	if attack_available and Input.is_action_pressed("attack"):

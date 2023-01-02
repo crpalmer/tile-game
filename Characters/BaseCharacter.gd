@@ -20,6 +20,7 @@ func _ready():
 
 func attack(who:BaseCharacter):
 	if not who: return
+	if not attack_available: return
 	
 	who.hostile = true
 	attack_available = false

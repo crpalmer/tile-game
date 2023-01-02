@@ -5,26 +5,23 @@ var conversation_starter = "Hello"
 var speaker_name = "Name"
 var attacked_text = "Die!"
 
-func _ready():
-	var player = GameState.player
-	if player:
-		$TrackingArea.connect("entered", self, "area_entered")
-		$TrackingArea.connect("exited", self, "area_exited")
-
 func start_conversation():
+	if $d/Conversation.visible: return
+	
 	$d/Conversation/SpeakerName.text = speaker_name
 	$d/Conversation/SpeakerText.text = conversation_starter
 	reset_text_box()
 	$d/Conversation.visible = true
 	
 func end_conversation(text = "", delay = 2.0):
-	if $d/Conversation.visible:
-		$d/Conversation/PlayerText.visible = false
-		$d/Conversation/PlayerPrompt.visible = false
-		if text.length() > 0:
-			$d/Conversation/SpeakerText.text = text
-			yield(get_tree().create_timer(delay), "timeout")
-		$d/Conversation.visible = false
+	if not $d/Conversation.visible: return
+	
+	$d/Conversation/PlayerText.visible = false
+	$d/Conversation/PlayerPrompt.visible = false
+	if text.length() > 0:
+		$d/Conversation/SpeakerText.text = text
+		yield(get_tree().create_timer(delay), "timeout")
+	$d/Conversation.visible = false
 
 func say(text:String):
 	$d/Conversation/SpeakerText.text = text
@@ -69,10 +66,19 @@ func tokenize(text:String):
 	return words
 
 func _process(delta):
+	var with_player = $TrackingArea.player_is_in_area
 	if hostile:
-		end_conversation(attacked_text)
-		if attack_available and $TrackingArea.is_player_in_area():
+		if with_player:
+			end_conversation(attacked_text, 0.75)
 			attack(GameState.player)
+		else:
+			var dir:Vector2 = GameState.player.position - position
+			dir /= dir.length()
+			var collision = move_and_collide(dir * delta * speed)
+			if collision and collision.collider != GameState.player:
+				move_and_collide(collision.remainder.length() * collision.normal)
+	elif with_player:
+		start_conversation() 
 
 func reset_text_box():
 	$d/Conversation/PlayerText.text = ""
@@ -80,13 +86,3 @@ func reset_text_box():
 	$d/Conversation/PlayerPrompt.visible = true
 	$d/Conversation/More.visible = false
 	$d/Conversation/PlayerText.grab_focus()
-
-func area_entered(who):
-	if who != GameState.player: return
-	if hostile: GameState.attack_player(self)
-	else: start_conversation()
-
-func area_exited(who):
-	if who != GameState.player: return
-	end_conversation()
-	
