@@ -8,7 +8,8 @@ var attacked_text = "Die!"
 func _ready():
 	var player = GameState.player
 	if player:
-		player.connect("entered", self, "on_Player_entered")
+		$TrackingArea.connect("entered", self, "area_entered")
+		$TrackingArea.connect("exited", self, "area_exited")
 
 func start_conversation():
 	$d/Conversation/SpeakerName.text = speaker_name
@@ -80,12 +81,12 @@ func reset_text_box():
 	$d/Conversation/More.visible = false
 	$d/Conversation/PlayerText.grab_focus()
 
-func on_Player_entered(who):
-	if who != self: return
+func area_entered(who):
+	if who != GameState.player: return
 	if hostile: GameState.attack_player(self)
 	else: start_conversation()
 
-func on_Player_exited(who):
-	if who != self: return
+func area_exited(who):
+	if who != GameState.player: return
 	end_conversation()
 	

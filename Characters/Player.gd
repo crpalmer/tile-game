@@ -1,10 +1,6 @@
 extends BaseCharacter
 class_name Player
 
-signal collided_with
-signal entered
-signal exited
-
 func _init():
 	GameState.player = self
 
@@ -28,14 +24,6 @@ func process_attack():
 		var who = $TrackingArea.who_is_in_area()
 		if who: attack(who)
 			
-func _on_TrackingArea_entered(who):
-	if GameState.player != self:
-		print_debug("not me!")
-	emit_signal("entered", who)
-
-func _on_TrackingArea_exited(who):
-	emit_signal("exited", who)
-
 func died():
 	GameState.player = null
 	print_debug("Player died!")
