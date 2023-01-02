@@ -9,20 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "Node2D",
 "class": "BaseCharacter",
 "language": "GDScript",
-"path": "res://BaseCharacter.gd"
+"path": "res://Characters/BaseCharacter.gd"
 }, {
-"base": "BaseCharacter",
+"base": "Area2D",
 "class": "NPC",
 "language": "GDScript",
-"path": "res://NPC.gd"
+"path": "res://Characters/NPC/NPC.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Player.gd"
+"path": "res://Characters/Player.gd"
 } ]
 _global_script_class_icons={
 "BaseCharacter": "",

@@ -1,13 +1,9 @@
-extends BaseCharacter
+extends Area2D
 class_name NPC
 
 var conversation_starter = "Hello"
 var speaker_name = "Name"
 
-func _ready():
-	start_conversation()
-	say_in_parts(["hi", "there", "testing"])
-	
 func set_speaker_name(name:String):
 	speaker_name = name
 	
@@ -48,6 +44,8 @@ func player_said_default(words:Array):
 		say("Hello.")
 	elif "hello" in words:
 		say("Hi.")
+	elif "thanks" in words:
+		say("You're welcome.")
 	else:
 		say("I don't understand")
 

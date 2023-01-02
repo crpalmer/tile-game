@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://NPC.gd" type="Script" id=1]
-[ext_resource path="res://dialogue-box.png" type="Texture" id=2]
-[ext_resource path="res://dialog-box-more-2.png" type="Texture" id=3]
-[ext_resource path="res://dialog-box-more-3.png" type="Texture" id=4]
-[ext_resource path="res://dialog-box-more-1.png" type="Texture" id=5]
+[ext_resource path="res://Characters/NPC/NPC.gd" type="Script" id=1]
+[ext_resource path="res://Characters/Images/Dialog/dialog-box-more-2.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Images/Dialog/dialog-box-more-3.png" type="Texture" id=3]
+[ext_resource path="res://Characters/Images/Dialog/dialogue-box.png" type="Texture" id=4]
+[ext_resource path="res://Characters/Images/Dialog/dialog-box-more-1.png" type="Texture" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -14,13 +14,13 @@ flags = 4
 frames = 6
 fps = 5.0
 frame_0/texture = ExtResource( 5 )
-frame_1/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 2 )
 frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 4 )
+frame_2/texture = ExtResource( 3 )
 frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 4 )
+frame_3/texture = ExtResource( 3 )
 frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 3 )
+frame_4/texture = ExtResource( 2 )
 frame_4/delay_sec = 0.0
 frame_5/texture = ExtResource( 5 )
 frame_5/delay_sec = 0.0
@@ -31,11 +31,12 @@ script = ExtResource( 1 )
 [node name="d" type="CanvasLayer" parent="."]
 
 [node name="Conversation" type="Node2D" parent="d"]
+visible = false
 material = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="d/Conversation"]
 position = Vector2( 502, 135 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 
 [node name="SpeakerName" type="Label" parent="d/Conversation"]
 margin_left = 170.0

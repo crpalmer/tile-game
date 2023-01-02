@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/door_spritesheet.png-23e001671f3121b0b784246a5948a81b.stex"
+path="res://.import/dialogue-box.png-4998e43278085772151f9866b0b4831b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://door_spritesheet.png"
-dest_files=[ "res://.import/door_spritesheet.png-23e001671f3121b0b784246a5948a81b.stex" ]
+source_file="res://Characters/Images/Dialog/dialogue-box.png"
+dest_files=[ "res://.import/dialogue-box.png-4998e43278085772151f9866b0b4831b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Untitled-1.png-4aad2e1a452f2631c1ec5a576483290f.stex"
+path="res://.import/Tileset.png-08631d1b8e6da49d89c2c45b03c23f11.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Untitled-1.png"
-dest_files=[ "res://.import/Untitled-1.png-4aad2e1a452f2631c1ec5a576483290f.stex" ]
+source_file="res://Dungeon/Tileset.png"
+dest_files=[ "res://.import/Tileset.png-08631d1b8e6da49d89c2c45b03c23f11.stex" ]
 
 [params]
 

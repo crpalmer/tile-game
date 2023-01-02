@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dialog-box-more-2.png-84fc40da7c87285d210bd1a4ca345e05.stex"
+path="res://.import/circle-128.png-9ffd6ba3e9a175dcf2941a158051aea2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dialog-box-more-2.png"
-dest_files=[ "res://.import/dialog-box-more-2.png-84fc40da7c87285d210bd1a4ca345e05.stex" ]
+source_file="res://Dungeon/circle-128.png"
+dest_files=[ "res://.import/circle-128.png-9ffd6ba3e9a175dcf2941a158051aea2.stex" ]
 
 [params]
 
