@@ -53,6 +53,8 @@ func player_said_default(words:Array):
 		say("Hi.")
 	elif "thanks" in words:
 		say("You're welcome.")
+	elif "bye" in words:
+		end_conversation("Bye.", 1)
 	else:
 		say("I don't understand")
 
