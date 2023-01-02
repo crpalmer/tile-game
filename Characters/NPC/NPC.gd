@@ -6,10 +6,10 @@ var speaker_name = "Name"
 var base:BaseCharacter
 
 func _ready():
-	base = GameState.get(name, "base-character")
+	base = GameState.get_base_character(name)
 	if not base:
 		base = BaseCharacter.new()
-		GameState.get(name)["base-character"] = base
+		GameState.set_base_character(name, base)
 
 func set_speaker_name(name:String):
 	speaker_name = name

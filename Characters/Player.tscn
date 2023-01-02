@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Dungeon/circle-128.png" type="Texture" id=3]
+[ext_resource path="res://Characters/TrackingArea.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.5, 25.5 )
@@ -25,8 +26,23 @@ drag_margin_v_enabled = true
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
+[node name="Player" type="Node2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.5, 0 )
 shape = SubResource( 1 )
 
-[node name="Player" type="Node2D" parent="."]
+[node name="AttackTimer" type="Timer" parent="."]
+
+[node name="TrackingArea" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackingArea"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 1 )
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="area_entered" from="TrackingArea" to="TrackingArea" method="_on_TrackingArea_area_entered"]
+[connection signal="area_exited" from="TrackingArea" to="TrackingArea" method="_on_TrackingArea_area_exited"]
+[connection signal="body_entered" from="TrackingArea" to="TrackingArea" method="_on_TrackingArea_body_entered"]
+[connection signal="body_exited" from="TrackingArea" to="TrackingArea" method="_on_TrackingArea_body_exited"]
