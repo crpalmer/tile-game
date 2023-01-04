@@ -9,6 +9,7 @@ export var secs_between_attacks = 1.0
 export var to_hit_ac10 = 12
 export var damage_dice = { "n": 1, "d": 6, "plus":0 }
 export var hostile = false
+var damage_popup_packed = preload("res://Characters/DamagePopup.tscn")
 var attack_available = true
 var timer:Timer
 
@@ -30,12 +31,12 @@ func attack(who:BaseCharacter):
 	var need = to_hit_ac10 + (10 - who.ac)
 	if roll == 20 or roll >= to_hit_ac10 + (10-who.ac):
 		var damage = roll_dice(damage_dice)
-		who.hp -= damage
 		print_debug(name + " damage to " + who.name + ": " + String(damage) + " roll " + String(roll))
-		if who.hp <= 0: who.died()
+		process_attack_outcome(who, true, damage)
 	else:
 		print_debug(name + " miss " + who.name + ": "+ String(roll) + " needed " + String(need))
-
+		process_attack_outcome(who, false)
+		
 func roll(n:int, d:int, plus:int = 0):
 	var total = plus
 	for i in n:
@@ -54,3 +55,27 @@ func attack_timer_expired():
 func died():
 	print_debug("killed!")
 	queue_free()
+
+func default_process(delta, with_player):
+	if hostile:
+		if with_player: attack(GameState.player)
+		else:
+			var dir:Vector2 = GameState.player.position - position
+			dir /= dir.length()
+			var collision = move_and_collide(dir * delta * speed)
+			if collision and collision.collider != GameState.player:
+				move_and_collide(collision.remainder.length() * collision.normal)
+
+func process_attack_outcome(who, hit, damage = 0):
+	var damage_popup = damage_popup_packed.instance()
+	damage_popup.find_node("Damage").text = String(damage)
+	damage_popup.find_node("Damage").visible = hit
+	damage_popup.find_node("Hit").visible = hit
+	damage_popup.find_node("Miss").visible = not hit
+	damage_popup.visible = true
+	who.hp -= damage
+	who.add_child(damage_popup)
+	var sleep = 0.65 if who.hp > 0 else 0.35
+	yield(get_tree().create_timer(sleep), "timeout")
+	if who.hp <= 0: who.died()
+	else: damage_popup.queue_free()

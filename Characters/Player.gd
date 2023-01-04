@@ -2,8 +2,11 @@ extends BaseCharacter
 class_name Player
 
 func _init():
+	randomize()
 	GameState.player = self
 	hp = 20
+	to_hit_ac10 = 10
+	damage_dice = {"n": 1, "d": 8, "plus": 1}
 
 func _process(delta):
 	process_movement(delta)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Dungeon/Dungeon.gd" type="Script" id=2]
 [ext_resource path="res://Characters/NPC/DungeonGreeter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dungeon/Tileset.png" type="Texture" id=4]
 [ext_resource path="res://Characters/NPC/NewGuy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/Monsters/Orc.tscn" type="PackedScene" id=6]
 
 [sub_resource type="OccluderPolygon2D" id=45]
 polygon = PoolVector2Array( 0, 64, 64, 64, 64, 64, 0, 64, 0, 0, 0, 0 )
@@ -795,3 +796,6 @@ position = Vector2( 1, -28 )
 
 [node name="NewGuy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 266, 353 )
+
+[node name="Orc" parent="." instance=ExtResource( 6 )]
+position = Vector2( 227, -141 )

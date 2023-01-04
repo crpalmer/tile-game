@@ -67,18 +67,10 @@ func tokenize(text:String):
 
 func _process(delta):
 	var with_player = $TrackingArea.player_is_in_area
-	if hostile:
-		if with_player:
-			end_conversation(attacked_text, 0.75)
-			attack(GameState.player)
-		else:
-			var dir:Vector2 = GameState.player.position - position
-			dir /= dir.length()
-			var collision = move_and_collide(dir * delta * speed)
-			if collision and collision.collider != GameState.player:
-				move_and_collide(collision.remainder.length() * collision.normal)
-	elif with_player:
-		start_conversation() 
+	if not hostile and with_player: start_conversation()
+	else:
+		end_conversation(attacked_text, 0.75)
+		default_process(delta, with_player)
 
 func reset_text_box():
 	$d/Conversation/PlayerText.text = ""
