@@ -9,10 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Thing",
-"class": "BaseCharacter",
+"base": "KinematicBody2D",
+"class": "Actor",
 "language": "GDScript",
-"path": "res://GameEngine/BaseCharacter.gd"
+"path": "res://GameEngine/Actors/Actor.gd"
+}, {
+"base": "Node2D",
+"class": "Conversation",
+"language": "GDScript",
+"path": "res://GameEngine/Conversation/Conversation.gd"
 }, {
 "base": "Thing",
 "class": "Door",
@@ -22,22 +27,17 @@ _global_script_classes=[ {
 "base": "Thing",
 "class": "InventoryThing",
 "language": "GDScript",
-"path": "res://GameEngine/InventoryThing.gd"
+"path": "res://GameEngine/Objects/InventoryThing.gd"
 }, {
-"base": "BaseCharacter",
-"class": "NPC",
-"language": "GDScript",
-"path": "res://GameEngine/NPC/NPC.gd"
-}, {
-"base": "BaseCharacter",
+"base": "Actor",
 "class": "Player",
 "language": "GDScript",
-"path": "res://GameEngine/Player.gd"
+"path": "res://GameEngine/Actors/Player.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Thing",
 "language": "GDScript",
-"path": "res://GameEngine/Thing.gd"
+"path": "res://GameEngine/Objects/Thing.gd"
 }, {
 "base": "Area2D",
 "class": "TrackingArea",
@@ -45,10 +45,10 @@ _global_script_classes=[ {
 "path": "res://GameEngine/TrackingArea.gd"
 } ]
 _global_script_class_icons={
-"BaseCharacter": "",
+"Actor": "",
+"Conversation": "",
 "Door": "",
 "InventoryThing": "",
-"NPC": "",
 "Player": "",
 "Thing": "",
 "TrackingArea": ""

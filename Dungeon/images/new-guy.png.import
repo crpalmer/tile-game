@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circle-128.png-9ffd6ba3e9a175dcf2941a158051aea2.stex"
+path="res://.import/new-guy.png-c26a00d4d161d2955fbe50f6c4e743d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Dungeon/circle-128.png"
-dest_files=[ "res://.import/circle-128.png-9ffd6ba3e9a175dcf2941a158051aea2.stex" ]
+source_file="res://Dungeon/images/new-guy.png"
+dest_files=[ "res://.import/new-guy.png-c26a00d4d161d2955fbe50f6c4e743d3.stex" ]
 
 [params]
 

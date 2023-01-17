@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/orc.png-4dcffc2f59f86d2af66fed482de9e0b4.stex"
+path="res://.import/dialog-box-more-1.png-b6c49e6dff65774ce4212e09a0253ed5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameEngine/Images/orc.png"
-dest_files=[ "res://.import/orc.png-4dcffc2f59f86d2af66fed482de9e0b4.stex" ]
+source_file="res://GameEngine/Conversation/dialog-box-more-1.png"
+dest_files=[ "res://.import/dialog-box-more-1.png-b6c49e6dff65774ce4212e09a0253ed5.stex" ]
 
 [params]
 

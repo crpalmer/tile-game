@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://GameEngine/Objects/Door.gd" type="Script" id=1]
 [ext_resource path="res://door1.png" type="Texture" id=2]
 [ext_resource path="res://door2.png" type="Texture" id=3]
+[ext_resource path="res://RedbrandHideout/images/lock.png" type="Texture" id=4]
 
 [sub_resource type="OccluderPolygon2D" id=2]
 closed = false
@@ -25,6 +26,10 @@ occluder = SubResource( 2 )
 
 [node name="Open" type="Sprite" parent="."]
 texture = ExtResource( 3 )
+
+[node name="Locked" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="Blocker" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )

@@ -1,26 +1,43 @@
-extends Thing
-class_name BaseCharacter
+extends KinematicBody2D
+class_name Actor
 
-enum Mood { FRIENDLY, NEUTRAL, HOSTILE }
-export var speed = 128
+enum Mood { FRIENDLY = 0, NEUTRAL = 1, HOSTILE =2 }
+
 export var ac = 10
 export var hp = 1
 export var max_hp = 1
-export var secs_between_attacks = 1.0
 export var to_hit_ac10 = 12
 export var damage_dice = { "n": 1, "d": 6, "plus":0 }
-var mood = Mood.NEUTRAL
-var damage_popup_packed = preload("res://GameEngine/DamagePopup.tscn")
+export var speed = 128
+export var secs_between_attacks = 1.0
+export var close_radius = 40
+export var vision_radius = 250
+
+export var mood = Mood.FRIENDLY
+var damage_popup_packed = preload("res://GameEngine/Actors/DamagePopup.tscn")
 var attack_available = true
 var timer:Timer
+
+var conversation
 
 func _ready():
 	randomize()
 	timer = Timer.new()
 	timer.connect("timeout", self, "attack_timer_expired")
 	add_child(timer)
+	conversation = $Conversation
+	set_vision_range(vision_radius)
+	set_close_range(close_radius)
 
-func attack(who:BaseCharacter):
+func set_vision_range(radius:int):
+	$VisionArea.set_tracking_radius(radius)
+	vision_radius = radius
+	
+func set_close_range(radius:int):
+	$CloseArea.set_tracking_radius(radius)
+	close_radius = radius
+	
+func attack(who:Actor):
 	if not who: return
 	if not attack_available: return
 	
@@ -57,24 +74,25 @@ func died():
 	print_debug("killed!")
 	queue_free()
 
-func default_process(delta, with_player = false):
+func is_visible_to_player():
+	return $VisionArea.player_is_in_area
+
+func _process(delta):
 	if GameState.paused: return
-	
+
+	if conversation: conversation.process(self, $CloseArea.player_is_in_area)
 	
 	if mood == Mood.HOSTILE:
-		if with_player: attack(GameState.player)
+		if $CloseArea.player_is_in_area: attack(GameState.player)
 		else:
 			var dir:Vector2 = GameState.player.position - position
 			dir /= dir.length()
 			var collision = move_and_collide(dir * delta * speed)
 			if collision and collision.collider != GameState.player:
 				move_and_collide(collision.remainder.length() * collision.normal)
-	elif with_player and mood == Mood.NEUTRAL:
+	elif mood == Mood.NEUTRAL and is_visible_to_player():
 		mood = Mood.HOSTILE
 
-func _process(delta):
-	default_process(delta)
-	
 func process_attack_outcome(who, hit, damage = 0):
 	var damage_popup = damage_popup_packed.instance()
 	damage_popup.find_node("Damage").text = String(damage)

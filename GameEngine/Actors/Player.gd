@@ -1,4 +1,4 @@
-extends BaseCharacter
+extends Actor
 class_name Player
 
 var inventory = []
@@ -11,13 +11,13 @@ func _init():
 	damage_dice = {"n": 1, "d": 8, "plus": 1}
 
 func _process(delta):
+	if GameState.paused: return
+	
 	process_movement(delta)
 	process_attack()
 	process_use()
 	
 func process_movement(delta):
-	if GameState.paused: return
-	
 	var dir = Vector2(0, 0)
 	if Input.is_action_pressed("left"): dir.x -= 1
 	if Input.is_action_pressed("right"): dir.x += 1
@@ -36,7 +36,8 @@ func process_attack():
 
 func process_use():
 	if Input.is_action_just_released("use"):
-		for use_on in $TrackingArea.who_is_in_area():
+		for use_on in $CloseArea.who_is_in_area():
+			#if use_on is InventoryThing: Inventory.add(use_on)
 			if use_on is Thing: use_on.used_by(self)
 		
 func died():

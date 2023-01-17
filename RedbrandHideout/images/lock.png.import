@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/attack-popup.png-365d691e0dec6be44af9bb71fa82e67f.stex"
+path="res://.import/lock.png-ec66eb586bc95d0b0980f8943d499e7c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameEngine/attack-popup.png"
-dest_files=[ "res://.import/attack-popup.png-365d691e0dec6be44af9bb71fa82e67f.stex" ]
+source_file="res://RedbrandHideout/images/lock.png"
+dest_files=[ "res://.import/lock.png-ec66eb586bc95d0b0980f8943d499e7c.stex" ]
 
 [params]
 

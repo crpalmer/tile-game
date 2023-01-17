@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dialog-box-more-3.png-c0384a5ce61091b2cf123745b6cddcd6.stex"
+path="res://.import/cragmaw-hideout.jpg-683bc9522cafe1aa4fedfed68407cb5e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameEngine/Images/Dialog/dialog-box-more-3.png"
-dest_files=[ "res://.import/dialog-box-more-3.png-c0384a5ce61091b2cf123745b6cddcd6.stex" ]
+source_file="res://Dungeon/cragmaw-hideout.jpg"
+dest_files=[ "res://.import/cragmaw-hideout.jpg-683bc9522cafe1aa4fedfed68407cb5e.stex" ]
 
 [params]
 

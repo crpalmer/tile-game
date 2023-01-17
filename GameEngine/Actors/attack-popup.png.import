@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/master-key.png-34e6805161d47a56ea6be867c68d64cf.stex"
+path="res://.import/attack-popup.png-277146ac7b2c310e7292db1c1818a3f2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RedbrandHideout/master-key.png"
-dest_files=[ "res://.import/master-key.png-34e6805161d47a56ea6be867c68d64cf.stex" ]
+source_file="res://GameEngine/Actors/attack-popup.png"
+dest_files=[ "res://.import/attack-popup.png-277146ac7b2c310e7292db1c1818a3f2.stex" ]
 
 [params]
 

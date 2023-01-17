@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dialog-box-more-1.png-86bf03908cd07e21ff83fa7675b2f94f.stex"
+path="res://.import/master-key.png-d4f8283ac64415d9f49407205227579a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameEngine/Images/Dialog/dialog-box-more-1.png"
-dest_files=[ "res://.import/dialog-box-more-1.png-86bf03908cd07e21ff83fa7675b2f94f.stex" ]
+source_file="res://RedbrandHideout/images/master-key.png"
+dest_files=[ "res://.import/master-key.png-d4f8283ac64415d9f49407205227579a.stex" ]
 
 [params]
 

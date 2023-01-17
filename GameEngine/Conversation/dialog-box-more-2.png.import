@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fairy.png-807dbc98ec8d45aa6b71a6db93c3ded5.stex"
+path="res://.import/dialog-box-more-2.png-e80890faf710bf2a5159827f658c9daf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameEngine/Images/fairy.png"
-dest_files=[ "res://.import/fairy.png-807dbc98ec8d45aa6b71a6db93c3ded5.stex" ]
+source_file="res://GameEngine/Conversation/dialog-box-more-2.png"
+dest_files=[ "res://.import/dialog-box-more-2.png-e80890faf710bf2a5159827f658c9daf.stex" ]
 
 [params]
 

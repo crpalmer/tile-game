@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Cragmaw Hideout/Cragmaw Hideout.gd" type="Script" id=1]
 [ext_resource path="res://Cragmaw Hideout/cragmaw-hideout.png" type="Texture" id=2]
-[ext_resource path="res://GameEngine/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameEngine/Actors/Player2.tscn" type="PackedScene" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -1921, 1846, -1955, 398, -818, 98, -693, -507, -902, -631, -1270, -631, -1417, -812, -1530, -671, -1214, -490, -970, -388, -908, -83, -1412, 161, -2334, 30, -2899, -880, -2294, -1661, -1598, -1191, -931, -2097, 105, -1469, 732, -1678, 1304, -1469, 1864, -1627, 3244, -309, 2039, 87, 2198, 285, 2673, 110, 2792, 1552, 1734, 1479, 846, 590, 896, 398, 648, 404, 574, 664, 416, 726, -280, 228, -314, 285, 3, 698, 885, 913, 1253, 1790, 834, 2140 )
