@@ -130,12 +130,6 @@ shadow_enabled = true
 
 [node name="DungeonGreeter" parent="." instance=ExtResource( 3 )]
 position = Vector2( 85, 60 )
-speed = 128
-ac = 10
-hp = 1
-max_hp = 1
-secs_between_attacks = 1.0
-to_hit_ac10 = 12
 damage_dice = {
 "d": 6,
 "n": 1,
@@ -147,12 +141,6 @@ position = Vector2( 1, -28 )
 
 [node name="NewGuy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 266, 353 )
-speed = 128
-ac = 10
-hp = 1
-max_hp = 1
-secs_between_attacks = 1.0
-to_hit_ac10 = 12
 damage_dice = {
 "d": 6,
 "n": 1,
