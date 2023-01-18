@@ -4,9 +4,8 @@ var state:Dictionary
 
 func _ready():
 	state = GameState.get(name)
-	$Conversation.speaker_name = "Bob"
 	conversation_starter()
-
+	
 func conversation_starter():
 	var player_name = state.get("player_name")
 	if player_name: $Conversation.starter = "Hi " + player_name

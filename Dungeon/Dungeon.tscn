@@ -132,9 +132,11 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1, 138 )
 script = ExtResource( 6 )
+hp = 100
 
 [node name="DungeonGreeter" parent="." instance=ExtResource( 3 )]
 position = Vector2( 85, 60 )
+display_name = "Bob"
 damage_dice = {
 "d": 6,
 "n": 1,
@@ -143,6 +145,7 @@ damage_dice = {
 
 [node name="NewGuy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -236, -157 )
+display_name = "Bob"
 damage_dice = {
 "d": 6,
 "n": 1,

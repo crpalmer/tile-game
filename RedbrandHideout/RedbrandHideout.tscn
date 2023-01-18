@@ -273,6 +273,7 @@ closed = false
 polygon = PoolVector2Array( -432, -800, -432, -673 )
 
 [node name="RedbrandHideout" type="Node2D"]
+position = Vector2( 0, 2 )
 script = ExtResource( 3 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -330,5 +331,5 @@ position = Vector2( -429, -827 )
 is_locked = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -481, -780 )
+position = Vector2( -481, -824 )
 script = ExtResource( 9 )

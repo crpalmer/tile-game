@@ -3,6 +3,7 @@ class_name Actor
 
 enum Mood { FRIENDLY = 0, NEUTRAL = 1, HOSTILE =2 }
 
+export var display_name:String = name
 export var ac = 10
 export var hp = 1
 export var max_hp = 1
@@ -49,10 +50,10 @@ func attack(who:Actor):
 	var need = to_hit_ac10 + (10 - who.ac)
 	if roll == 20 or roll >= to_hit_ac10 + (10-who.ac):
 		var damage = roll_dice(damage_dice)
-		print_debug(name + " damage to " + who.name + ": " + String(damage) + " roll " + String(roll))
+		GameState.player.show_message(name + " damage to " + who.name + ": " + String(damage) + " roll " + String(roll))
 		process_attack_outcome(who, true, damage)
 	else:
-		print_debug(name + " miss " + who.name + ": "+ String(roll) + " needed " + String(need))
+		GameState.player.show_message(name + " miss " + who.name + ": "+ String(roll) + " needed " + String(need))
 		process_attack_outcome(who, false)
 		
 func roll(n:int, d:int, plus:int = 0):

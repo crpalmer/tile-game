@@ -2,6 +2,7 @@ extends Actor
 class_name Player
 
 var inventory = []
+var messages
 
 func _init():
 	randomize()
@@ -9,6 +10,7 @@ func _init():
 	hp = 20
 	to_hit_ac10 = 10
 	damage_dice = {"n": 1, "d": 8, "plus": 1}
+	messages = $Camera2D/HUD/Messages
 
 func _process(delta):
 	if GameState.paused: return
@@ -31,11 +33,11 @@ func process_movement(delta):
 
 func process_attack():
 	if attack_available and Input.is_action_pressed("attack"):
-		var in_area:Array = $TrackingArea.who_is_in_area()
+		var in_area:Array = $CloseArea.who_is_in_area()
 		if in_area.size() > 0: attack(in_area[randi() % in_area.size()])
 
 func process_use():
-	if Input.is_action_just_released("use"):
+	if Input.is_action_just_released("use") and not Input.is_action_just_released("used"):
 		for use_on in $CloseArea.who_is_in_area():
 			#if use_on is InventoryThing: Inventory.add(use_on)
 			if use_on is Thing: use_on.used_by(self)
@@ -44,3 +46,6 @@ func died():
 	GameState.player = null
 	print_debug("Player died!")
 	queue_free()
+
+func show_message(message):
+	messages.show_message(message)

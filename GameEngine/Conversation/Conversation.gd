@@ -2,7 +2,6 @@ extends Node2D
 class_name Conversation
 
 export var starter = "Hello"
-export var speaker_name = "Name"
 export var attacked_text = "Die!"
 
 var already_talked = false
@@ -15,7 +14,7 @@ func start():
 	
 	GameState.pause()
 	
-	$Canvas/SpeakerName.text = speaker_name
+	$Canvas/SpeakerName.text = get_parent().display_name
 	$Canvas/SpeakerText.text = starter
 	reset_text_box()
 	$Canvas.visible = true
@@ -58,6 +57,8 @@ func player_said_default(words:Array):
 		say("Hi.")
 	elif "thanks" in words:
 		say("You're welcome.")
+	elif "name" in words:
+		say("My name is " + get_parent().display_name)
 	elif "bye" in words:
 		end("Bye.", 1)
 	else:
