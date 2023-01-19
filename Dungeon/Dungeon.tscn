@@ -132,7 +132,6 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1, 138 )
 script = ExtResource( 6 )
-hp = 100
 
 [node name="DungeonGreeter" parent="." instance=ExtResource( 3 )]
 position = Vector2( 85, 60 )

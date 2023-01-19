@@ -32,7 +32,13 @@ func set_vision_range(radius:int):
 func set_close_range(radius:int):
 	$CloseArea.set_tracking_radius(radius)
 	close_radius = radius
-	
+
+func take_damage(damage:int):
+	hp -= damage
+	show_message(name + " takes " + String(damage) + " damage.")
+	if hp <= 0: died()
+	else: damage_popup(true, damage)
+
 func attack(who:Actor):
 	if not who: return
 	if not attack_available: return
@@ -44,10 +50,7 @@ func attack(who:Actor):
 	var roll = roll_die(20)
 	if roll == 20 or roll >= to_hit_ac10 + (10-who.ac):
 		var damage = roll_dice(damage_dice)
-		who.hp -= damage
-		GameState.player.show_message(who.name + " takes " + String(damage) + " damage.")
-		if who.hp <= 0: who.died()
-		else: who.damage_popup(true, damage)
+		who.take_damage(damage)
 	else:
 		who.damage_popup(false)
 		
@@ -67,7 +70,7 @@ func attack_timer_expired():
 	attack_available = true
 
 func died():
-	print_debug("killed!")
+	show_message(name + " died!")
 	queue_free()
 
 func player_is_visible():
@@ -100,7 +103,10 @@ func damage_popup(hit, damage = 0):
 	$DamagePopup.visible = true
 	$DamagePopupTimer.start(0.5)
 	pass
-	
+
+func show_message(msg:String):
+	GameState.player.show_message(msg)
+
 func _on_DamagePopupTimer_timeout():
 	$DamagePopup.visible = false
 

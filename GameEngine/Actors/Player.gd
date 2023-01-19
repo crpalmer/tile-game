@@ -2,15 +2,20 @@ extends Actor
 class_name Player
 
 var inventory = []
-var messages
+var HUD:HUD
 
 func _init():
 	randomize()
 	GameState.player = self
 
 func _ready():
-	messages = $Camera2D/HUD/Messages
+	HUD = $Camera2D/HUD
+	HUD.update_player_stats(self)
 
+func take_damage(damage:int):
+	.take_damage(damage)
+	HUD.update_player_stats(self)
+	
 func process(delta):
 	if GameState.paused: return
 	
@@ -48,4 +53,4 @@ func died():
 	$Sprite.visible = false
 
 func show_message(message):
-	messages.show_message(message)
+	HUD.message(message)

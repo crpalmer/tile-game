@@ -8,16 +8,15 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Player" instance=ExtResource( 3 )]
-ac = 0
-hp = 1000
-max_hp = 1000
+ac = 4
+hp = 20
+max_hp = 20
 to_hit_ac10 = 5
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 current = true
 
 [node name="HUD" parent="Camera2D" index="0" instance=ExtResource( 4 )]
-position = Vector2( 0, -5 )
 
 [node name="VisionLight" type="Light2D" parent="." index="1"]
 texture = ExtResource( 2 )
