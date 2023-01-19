@@ -2,7 +2,7 @@ extends Actor
 class_name Player
 
 var inventory = []
-var HUD:HUD
+var HUD
 
 func _init():
 	randomize()
@@ -21,9 +21,10 @@ func killed(who):
 	HUD.update_player_stats(self)
 	
 func process(delta):
-	if GameState.paused: return
-	
 	process_movement(delta)
+
+	if GameState.paused: return
+
 	process_attack()
 	process_use()
 	

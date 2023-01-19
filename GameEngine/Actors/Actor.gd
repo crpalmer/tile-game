@@ -95,10 +95,10 @@ func player_is_visible():
 	return false
 
 func process(delta):
-	if GameState.paused: return
-
 	if conversation: conversation.process(self, $CloseArea.player_is_in_area)
 	
+	if GameState.paused: return
+		
 	var can_see_player = player_is_visible()
 	
 	if mood == Mood.HOSTILE:
