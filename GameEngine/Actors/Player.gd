@@ -12,8 +12,12 @@ func _ready():
 	HUD = $Camera2D/HUD
 	HUD.update_player_stats(self)
 
-func take_damage(damage:int):
-	.take_damage(damage)
+func take_damage(damage:int, from):
+	.take_damage(damage, from)
+	HUD.update_player_stats(self)
+
+func killed(who):
+	xp += who.xp_value
 	HUD.update_player_stats(self)
 	
 func process(delta):

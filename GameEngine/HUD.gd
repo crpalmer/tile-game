@@ -8,4 +8,4 @@ func update_player_stats(player):
 	$Stats/HPRect/HP.text = String(player.hp)
 	$Stats/HPMaxRect/HPMax.text = String(player.max_hp)
 	$Stats/ACRect/AC.text = String(player.ac)
-	$Stats/ExpRect/Exp.text = String(1)
+	$Stats/XPRect/XP.text = String(player.xp)

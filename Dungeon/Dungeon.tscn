@@ -136,20 +136,10 @@ script = ExtResource( 6 )
 [node name="DungeonGreeter" parent="." instance=ExtResource( 3 )]
 position = Vector2( 85, 60 )
 display_name = "Bob"
-damage_dice = {
-"d": 6,
-"n": 1,
-"plus": 0
-}
 
 [node name="NewGuy" parent="." instance=ExtResource( 5 )]
 position = Vector2( -236, -157 )
 display_name = "Bob"
-damage_dice = {
-"d": 6,
-"n": 1,
-"plus": 0
-}
 
 [node name="Orc" parent="." instance=ExtResource( 4 )]
-position = Vector2( -44, 7 )
+position = Vector2( 215, -156 )

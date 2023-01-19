@@ -7,12 +7,14 @@ export var display_name:String = name
 export var ac = 10
 export var hp = 1
 export var max_hp = 1
-export var to_hit_ac10 = 12
+export var to_hit_modifiers = 0
 export var damage_dice = { "n": 1, "d": 6, "plus":0 }
-export var speed = 128
+export var speed = 30
+export var xp_value = 1
 export var secs_between_attacks = 1.0
 export var close_radius = 40
 export var vision_radius = 250
+export var xp = 0
 
 export var mood = Mood.FRIENDLY
 var attack_available = true
@@ -33,11 +35,14 @@ func set_close_range(radius:int):
 	$CloseArea.set_tracking_radius(radius)
 	close_radius = radius
 
-func take_damage(damage:int):
+func take_damage(damage:int, from:Actor):
 	hp -= damage
 	show_message(name + " takes " + String(damage) + " damage.")
-	if hp <= 0: died()
-	else: damage_popup(true, damage)
+	if hp <= 0:
+		from.killed(self)
+		died()
+	else:
+		damage_popup(true, damage)
 
 func attack(who:Actor):
 	if not who: return
@@ -48,16 +53,17 @@ func attack(who:Actor):
 	$AttackAvailable.start(secs_between_attacks)
 
 	var roll = roll_die(20)
-	if roll == 20 or roll >= to_hit_ac10 + (10-who.ac):
+	if roll == 20 or roll + to_hit_modifiers >= who.ac:
 		var damage = roll_dice(damage_dice)
-		who.take_damage(damage)
+		who.take_damage(damage, self)
 	else:
 		who.damage_popup(false)
 		
 func roll(n:int, d:int, plus:int = 0):
 	var total = plus
 	for i in n:
-		total += randi()%d+1
+		var roll = randi()%d + 1
+		total += roll + plus
 	return total
 
 func roll_die(d:int):
@@ -72,6 +78,9 @@ func attack_timer_expired():
 func died():
 	show_message(name + " died!")
 	queue_free()
+	
+func killed(who:Actor):
+	pass
 
 func player_is_visible():
 	return $VisionArea.player_is_in_area
