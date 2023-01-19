@@ -82,10 +82,12 @@ func tokenize(text:String):
 func process(actor, with_player):
 	if not with_player: already_talked = false
 	
-	if actor.mood == Actor.Mood.FRIENDLY and with_player and not already_talked:
+	if not with_player:
+		end()
+	elif actor.mood == Actor.Mood.FRIENDLY and not already_talked:
 		start()
-	#else:
-		# end(attacked_text, 0.75)
+	elif actor.mood == Actor.Mood.HOSTILE:
+		end(attacked_text, 0.75)
 
 func reset_text_box():
 	$Canvas/PlayerText.text = ""

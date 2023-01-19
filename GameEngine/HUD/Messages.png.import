@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Messages.png-819845af06014c4bfb83d6b9f1101854.stex"
+path="res://.import/Messages.png-8dc885d0eea14b66ba914846b8c915fa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameEngine/Messages.png"
-dest_files=[ "res://.import/Messages.png-819845af06014c4bfb83d6b9f1101854.stex" ]
+source_file="res://GameEngine/HUD/Messages.png"
+dest_files=[ "res://.import/Messages.png-8dc885d0eea14b66ba914846b8c915fa.stex" ]
 
 [params]
 

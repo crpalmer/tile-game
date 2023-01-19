@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "HUD",
 "language": "GDScript",
-"path": "res://GameEngine/HUD.gd"
+"path": "res://GameEngine/HUD/HUD.gd"
 }, {
 "base": "Thing",
 "class": "InventoryThing",
@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "CanvasLayer",
 "class": "Messages",
 "language": "GDScript",
-"path": "res://GameEngine/Messages.gd"
+"path": "res://GameEngine/HUD/Messages.gd"
 }, {
 "base": "Actor",
 "class": "Monster",
