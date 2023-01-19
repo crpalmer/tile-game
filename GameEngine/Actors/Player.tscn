@@ -8,6 +8,10 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Player" instance=ExtResource( 3 )]
+ac = 0
+hp = 1000
+max_hp = 1000
+to_hit_ac10 = 5
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 current = true

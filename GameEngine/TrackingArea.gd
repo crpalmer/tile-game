@@ -1,9 +1,6 @@
 extends Area2D
 class_name TrackingArea
 
-signal entered
-signal exited
-
 var in_area:Dictionary
 var player_is_in_area = false
 
@@ -29,26 +26,11 @@ func area_entered(who):
 func area_exited(who):
 	record_area(who, -1)
 
-func is_filtered_area(who):
-	var parent = who.get_parent()
-	if not parent or not parent is Actor: return false
-	return who.name == "VisionArea" or who.name == "CloseArea"
-	
 func record_area(who, what):
-	if is_filtered_area(who): return
-	
-	var parent = who.get_parent()
-	
-	if who == self or who == get_parent() or who is TileMap: return
-	if parent and parent is PhysicsBody2D: record_area(parent, what)
-	if in_area.has(who): in_area[who] += what
-	else: in_area[who] = what
-	if in_area[who] < 0: in_area[who] = 0
-	
-	if who == GameState.player: player_is_in_area = what
-	
-	if what > 0:
-		emit_signal("entered", who)
-	else:
-		emit_signal("exited", who)
-	print_debug(who.name + " is in area " + name + " of " + get_parent().name + " " + String(in_area[who]) + " times")
+	if who != get_parent() and who is Actor:
+		var count = in_area[who] if in_area.has(who) else 0
+		count += what
+		if count <= 0: in_area.erase(who)
+		else: in_area[who] = count
+		if who == GameState.player: player_is_in_area = (count > 0)
+		print(name + " " + get_parent().name + " : " + String(in_area))

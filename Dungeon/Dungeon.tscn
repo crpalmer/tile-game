@@ -153,4 +153,4 @@ damage_dice = {
 }
 
 [node name="Orc" parent="." instance=ExtResource( 4 )]
-position = Vector2( 216, -103 )
+position = Vector2( -44, 7 )

@@ -7,12 +7,11 @@ var messages
 func _init():
 	randomize()
 	GameState.player = self
-	hp = 20
-	to_hit_ac10 = 10
-	damage_dice = {"n": 1, "d": 8, "plus": 1}
+
+func _ready():
 	messages = $Camera2D/HUD/Messages
 
-func _process(delta):
+func process(delta):
 	if GameState.paused: return
 	
 	process_movement(delta)
@@ -37,7 +36,7 @@ func process_attack():
 		if in_area.size() > 0: attack(in_area[randi() % in_area.size()])
 
 func process_use():
-	if Input.is_action_just_released("use") and not Input.is_action_just_released("used"):
+	if Input.is_action_just_released("use"):
 		for use_on in $CloseArea.who_is_in_area():
 			#if use_on is InventoryThing: Inventory.add(use_on)
 			if use_on is Thing: use_on.used_by(self)
@@ -45,7 +44,8 @@ func process_use():
 func died():
 	GameState.player = null
 	print_debug("Player died!")
-	queue_free()
+	#queue_free()
+	$Sprite.visible = false
 
 func show_message(message):
 	messages.show_message(message)
