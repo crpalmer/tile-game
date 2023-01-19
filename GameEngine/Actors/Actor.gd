@@ -15,8 +15,9 @@ export var secs_between_attacks = 1.0
 export var close_radius = 40
 export var vision_radius = 250
 export var xp = 0
-
 export var mood = Mood.FRIENDLY
+
+var player_position
 var attack_available = true
 
 var conversation
@@ -26,6 +27,7 @@ func _ready():
 	conversation = $Conversation
 	set_vision_range(vision_radius)
 	set_close_range(close_radius)
+	player_position = position
 
 func set_vision_range(radius:int):
 	$VisionArea.set_tracking_radius(radius)
@@ -83,22 +85,32 @@ func killed(who:Actor):
 	pass
 
 func player_is_visible():
-	return $VisionArea.player_is_in_area
+	if $VisionArea.player_is_in_area:
+		var space_rid = get_world_2d().space
+		var space_state = Physics2DServer.space_get_direct_state(space_rid)
+		var in_sight = space_state.intersect_ray(position, GameState.player.position, [self])
+		if in_sight.collider == GameState.player:
+			player_position = GameState.player.position
+			return true
+	return false
 
 func process(delta):
 	if GameState.paused: return
 
 	if conversation: conversation.process(self, $CloseArea.player_is_in_area)
 	
+	var can_see_player = player_is_visible()
+	
 	if mood == Mood.HOSTILE:
 		if $CloseArea.player_is_in_area: attack(GameState.player)
 		else:
-			var dir:Vector2 = GameState.player.position - position
-			dir /= dir.length()
-			var collision = move_and_collide(dir * delta * speed)
-			if collision and collision.collider != GameState.player:
-				move_and_collide(collision.remainder.length() * collision.normal)
-	elif mood == Mood.NEUTRAL and player_is_visible():
+			var dir:Vector2 = player_position - position
+			if dir.length() > 5:
+				dir /= dir.length()
+				var collision = move_and_collide(dir * delta * speed)
+				if collision and collision.collider != GameState.player:
+					move_and_collide(collision.remainder.length() * collision.normal)
+	elif mood == Mood.NEUTRAL and can_see_player:
 		mood = Mood.HOSTILE
 	
 func _process(delta):

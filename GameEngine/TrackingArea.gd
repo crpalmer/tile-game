@@ -33,4 +33,4 @@ func record_area(who, what):
 		if count <= 0: in_area.erase(who)
 		else: in_area[who] = count
 		if who == GameState.player: player_is_in_area = (count > 0)
-		print(name + " " + get_parent().name + " : " + String(in_area))
+		#print(name + " " + get_parent().name + " : " + String(in_area))
