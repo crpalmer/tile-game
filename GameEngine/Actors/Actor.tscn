@@ -9,8 +9,10 @@ script = ExtResource( 4 )
 speed = 120
 
 [node name="VisionArea" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="CloseArea" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="AttackAvailable" type="Timer" parent="."]
 

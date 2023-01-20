@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GameEngine/Actors/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Dungeon/owlbear.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 206.774
+
+[node name="OwlBear" instance=ExtResource( 1 )]
+ac = 13
+to_hit_modifiers = 7
+damage_dice = {
+"d": 8,
+"n": 2,
+"plus": 5
+}
+speed = 160
+xp_value = 700
+hp_dice = {
+"d": 10,
+"n": 7,
+"plus": 21
+}
+
+[node name="Sprite" type="Sprite" parent="." index="5"]
+position = Vector2( -7, -1 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+position = Vector2( -1, 0 )
+scale = Vector2( 0.15, 0.15 )
+shape = SubResource( 1 )

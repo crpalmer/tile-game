@@ -25,6 +25,8 @@ var conversation
 func _ready():
 	randomize()
 	conversation = $Conversation
+	$VisionArea.visible = true
+	$CloseArea.visible = true
 	set_vision_range(vision_radius)
 	set_close_range(close_radius)
 	player_position = position
