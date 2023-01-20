@@ -27,7 +27,7 @@ func area_exited(who):
 	record_area(who, -1)
 
 func record_area(who, what):
-	if who != get_parent() and who is Actor:
+	if who != get_parent() and (who is Actor or who is Thing):
 		var count = in_area[who] if in_area.has(who) else 0
 		count += what
 		if count <= 0: in_area.erase(who)
