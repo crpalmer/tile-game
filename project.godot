@@ -80,7 +80,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameState="*res://GameEngine/GameState.gd"
+GameEngine="*res://GameEngine/GameEngine.gd"
 
 [display]
 

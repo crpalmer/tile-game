@@ -4,4 +4,4 @@ export var scene:String
 export var entry_point:String
 
 func _ready():
-	GameState.enter_scene(scene, entry_point)
+	GameEngine.enter_scene(scene, entry_point)

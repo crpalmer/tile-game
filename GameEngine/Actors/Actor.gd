@@ -90,25 +90,25 @@ func player_is_visible():
 	if $VisionArea.player_is_in_area:
 		var space_rid = get_world_2d().space
 		var space_state = Physics2DServer.space_get_direct_state(space_rid)
-		var in_sight = space_state.intersect_ray(position, GameState.player.position, [self])
-		if in_sight.collider == GameState.player:
-			player_position = GameState.player.position
+		var in_sight = space_state.intersect_ray(position, GameEngine.player.position, [self])
+		if in_sight.collider == GameEngine.player:
+			player_position = GameEngine.player.position
 			return true
 	return false
 
 func process(delta):
 	if conversation: conversation.process(self, $CloseArea.player_is_in_area)
 	
-	if GameState.paused: return
+	if GameEngine.paused: return
 	
 	if mood == Mood.HOSTILE:
-		if $CloseArea.player_is_in_area: attack(GameState.player)
+		if $CloseArea.player_is_in_area: attack(GameEngine.player)
 		elif player_is_visible():
 			var dir:Vector2 = player_position - position
 			if dir.length() > 5:
 				dir /= dir.length()
 				var collision = move_and_collide(dir * delta * speed)
-				if collision and collision.collider != GameState.player:
+				if collision and collision.collider != GameEngine.player:
 					move_and_collide(collision.remainder.length() * collision.normal)
 	elif mood == Mood.NEUTRAL and player_is_visible():
 		mood = Mood.HOSTILE
@@ -126,7 +126,7 @@ func damage_popup(hit, damage = 0):
 	pass
 
 func show_message(msg:String):
-	GameState.player.show_message(msg)
+	GameEngine.player.show_message(msg)
 
 func _on_DamagePopupTimer_timeout():
 	$DamagePopup.visible = false

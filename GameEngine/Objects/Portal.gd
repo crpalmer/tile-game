@@ -8,4 +8,4 @@ func _ready():
 
 func body_entered(body):
 	if body is Player:
-		GameState.enter_scene(scene, entry_point)
+		GameEngine.enter_scene(scene, entry_point)

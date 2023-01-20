@@ -1,21 +1,19 @@
 extends Actor
 
-var state:Dictionary
+var player_name
 
 func _ready():
-	state = GameState.get(name)
 	conversation_starter()
 	
 func conversation_starter():
-	var player_name = state.get("player_name")
 	if player_name: $Conversation.starter = "Hi " + player_name
 	else: $Conversation.starter = "Hi my name is Bob.  Who are you?"
 
 func player_said(said):
-	if not state.has("player_name"):
-		state["player_name"] = said
+	if not player_name:
+		player_name = said
 		conversation_starter()
-		$Conversation.say("Hi " + state["player_name"] + ".  Did you know that I've been trapped in this dungeon for years and years?  There's been so many things come in here but no one ever leaves.\n\nWhat can I do for you?")
+		$Conversation.say("Hi " + player_name + ".  Did you know that I've been trapped in this dungeon for years and years?  There's been so many things come in here but no one ever leaves.\n\nWhat can I do for you?")
 	else:
 		player_asked(said)
 

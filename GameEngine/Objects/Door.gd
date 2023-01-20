@@ -19,7 +19,7 @@ func used_by(who):
 		if is_locked:
 		# if who.has_a(key): is_locked = false
 		# else
-			GameState.player.show_message("The door appears to be locked")
+			GameEngine.player.show_message("The door appears to be locked")
 		if not is_locked:
 			is_closed = not is_closed
 			ensure_state()

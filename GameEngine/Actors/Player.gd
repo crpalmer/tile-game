@@ -23,7 +23,7 @@ func killed(who):
 func process(delta):
 	process_movement(delta)
 
-	if GameState.paused: return
+	if GameEngine.paused: return
 
 	process_attack()
 	process_use()
@@ -52,9 +52,7 @@ func process_use():
 			if use_on is Thing: use_on.used_by(self)
 		
 func died():
-	GameState.player = null
 	print_debug("Player died!")
-	#queue_free()
 	$Sprite.visible = false
 
 func show_message(message):

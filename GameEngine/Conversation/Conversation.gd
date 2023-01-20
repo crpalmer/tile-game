@@ -12,7 +12,7 @@ func _ready():
 func start():
 	if $Canvas.visible: return
 	
-	GameState.pause()
+	GameEngine.pause()
 	
 	$Canvas/SpeakerName.text = get_parent().display_name
 	$Canvas/SpeakerText.text = starter
@@ -30,7 +30,7 @@ func end(text = "", delay = 2.0):
 		yield(get_tree().create_timer(delay), "timeout")
 	$Canvas.visible = false
 	
-	GameState.resume()
+	GameEngine.resume()
 
 func say(text:String):
 	$Canvas/SpeakerText.text = text
