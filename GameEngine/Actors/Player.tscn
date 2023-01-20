@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Dungeon/images/circle-128.png" type="Texture" id=2]
@@ -7,6 +7,21 @@
 [ext_resource path="res://GameEngine/Actors/Player.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Player" instance=ExtResource( 3 )]
 z_index = 1
@@ -23,6 +38,7 @@ damage_dice = {
 xp_value = 0
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
+modulate = Color( 0, 0, 0, 1 )
 current = true
 
 [node name="HUD" parent="Camera2D" index="0" instance=ExtResource( 4 )]
@@ -41,3 +57,12 @@ shape = SubResource( 1 )
 
 [node name="CloseArea" parent="." index="5"]
 position = Vector2( 1, 0 )
+
+[node name="Fade" type="ColorRect" parent="." index="9"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade" index="0"]
+anims/Fade = SubResource( 2 )
