@@ -100,19 +100,17 @@ func process(delta):
 	if conversation: conversation.process(self, $CloseArea.player_is_in_area)
 	
 	if GameState.paused: return
-		
-	var can_see_player = player_is_visible()
 	
 	if mood == Mood.HOSTILE:
 		if $CloseArea.player_is_in_area: attack(GameState.player)
-		else:
+		elif player_is_visible():
 			var dir:Vector2 = player_position - position
 			if dir.length() > 5:
 				dir /= dir.length()
 				var collision = move_and_collide(dir * delta * speed)
 				if collision and collision.collider != GameState.player:
 					move_and_collide(collision.remainder.length() * collision.normal)
-	elif mood == Mood.NEUTRAL and can_see_player:
+	elif mood == Mood.NEUTRAL and player_is_visible():
 		mood = Mood.HOSTILE
 	
 func _process(delta):

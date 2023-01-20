@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="tile-game"
-run/main_scene="res://RedbrandHideout/RedbrandHideout.tscn"
+run/main_scene="res://GameEngine/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

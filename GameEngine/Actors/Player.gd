@@ -4,14 +4,14 @@ class_name Player
 var inventory = []
 var HUD
 
-func _init():
-	randomize()
-	GameState.player = self
-
 func _ready():
+	enter_current_scene()
+	
+func enter_current_scene():
 	HUD = $Camera2D/HUD
 	HUD.update_player_stats(self)
-
+	pass
+	
 func take_damage(damage:int, from):
 	.take_damage(damage, from)
 	HUD.update_player_stats(self)
