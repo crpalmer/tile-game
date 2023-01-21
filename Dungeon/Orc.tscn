@@ -19,6 +19,11 @@ hp_dice = {
 "n": 2,
 "plus": 6
 }
+gp_dice = {
+"d": 12,
+"n": 1,
+"plus": -4
+}
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 scale = Vector2( 0.2, 0.2 )

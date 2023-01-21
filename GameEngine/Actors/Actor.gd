@@ -3,7 +3,7 @@ class_name Actor
 
 enum Mood { FRIENDLY = 0, NEUTRAL = 1, HOSTILE =2 }
 
-export var display_name:String = name
+export var display_name:String
 export var ac = 10
 export var hp = 1
 export var max_hp = 1
@@ -30,6 +30,7 @@ func _ready():
 	set_vision_range(vision_radius)
 	set_close_range(close_radius)
 	player_position = position
+	if not display_name or display_name == "": display_name = name
 
 func set_vision_range(radius:int):
 	$VisionArea.set_tracking_radius(radius)
@@ -41,7 +42,7 @@ func set_close_range(radius:int):
 
 func take_damage(damage:int, from:Actor):
 	hp -= damage
-	show_message(name + " takes " + String(damage) + " damage.")
+	show_message(display_name + " takes " + String(damage) + " damage.")
 	if hp <= 0:
 		from.killed(self)
 		died()
@@ -80,8 +81,10 @@ func attack_timer_expired():
 	attack_available = true
 
 func died():
-	show_message(name + " died!")
-	queue_free()
+	show_message(display_name + " died!")
+	for i in get_children():
+		if i is InventoryThing: GameEngine.add_node_at(i, position)
+		queue_free()
 	
 func killed(who:Actor):
 	pass
@@ -133,3 +136,6 @@ func _on_DamagePopupTimer_timeout():
 
 func _on_AttackAvailable_timeout():
 	attack_available = true
+
+func to_string():
+	return display_name

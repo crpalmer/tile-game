@@ -21,6 +21,11 @@ hp_dice = {
 "n": 7,
 "plus": 21
 }
+gp_dice = {
+"d": 0,
+"n": 0,
+"plus": 0
+}
 
 [node name="Sprite" type="Sprite" parent="." index="5"]
 position = Vector2( -7, -1 )

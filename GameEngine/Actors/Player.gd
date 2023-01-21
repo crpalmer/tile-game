@@ -1,8 +1,8 @@
 extends Actor
 class_name Player
 
-var inventory = []
 var HUD
+var inventory = []
 
 func _ready():
 	enter_current_scene()
@@ -27,6 +27,7 @@ func process(delta):
 
 	process_attack()
 	process_use()
+	process_look()
 	
 func process_movement(delta):
 	var dir = Vector2(0, 0)
@@ -35,11 +36,8 @@ func process_movement(delta):
 	if Input.is_action_pressed("up"): dir.y -= 1
 	if Input.is_action_pressed("down"): dir.y += 1
 	
-	var collision:KinematicCollision2D = move_and_collide(dir*speed*delta)
-	if collision and collision.collider is InventoryThing:
-		inventory.push_back(collision.collider)
-		collision.collider.get_parent().remove_child(collision.collider)
-
+	var _collision:KinematicCollision2D = move_and_collide(dir*speed*delta)
+	
 func process_attack():
 	if attack_available and Input.is_action_pressed("attack"):
 		var in_area:Array = $CloseArea.who_is_in_area()
@@ -48,9 +46,28 @@ func process_attack():
 func process_use():
 	if Input.is_action_just_released("use"):
 		for use_on in $CloseArea.who_is_in_area():
-			#if use_on is InventoryThing: Inventory.add(use_on)
-			if use_on is Thing: use_on.used_by(self)
-		
+			if use_on is InventoryThing: add_to_inventory(use_on)
+			elif use_on is Thing: use_on.used_by(self)
+
+func process_look():
+	if Input.is_action_just_released("look"):
+		var what = ""
+		for thing in $CloseArea.who_is_in_area():
+			print_debug(thing)
+			if what.length() > 0: what = what + ", "
+			what = what + thing.to_string()
+		if what.length() == 0: what = "nothing"
+		show_message("You see: " + what)
+
+func add_to_inventory(to_add):
+	show_message("You picked up " + to_add.to_string())
+	to_add.get_parent().remove_child(to_add)
+	for i in inventory:
+		if i == to_add:
+			i.n = i.n + to_add.n
+			return
+	inventory.push_back(to_add)
+
 func died():
 	print_debug("Player died!")
 	$Sprite.visible = false

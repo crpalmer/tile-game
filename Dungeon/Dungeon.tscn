@@ -151,7 +151,13 @@ display_name = "Bob"
 position = Vector2( -226, 478 )
 
 [node name="Orc" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 215, -156 )
+gp_dice = {
+"d": 0,
+"n": 0,
+"plus": 0
+}
 
 [node name="entrance" type="Node2D" parent="."]
 position = Vector2( -76, -25 )
