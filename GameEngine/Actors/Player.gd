@@ -68,6 +68,10 @@ func add_to_inventory(to_add):
 			return
 	inventory.push_back(to_add)
 
+func has_a(node):
+	for i in inventory: if i == node: return true
+	return false
+	
 func died():
 	print_debug("Player died!")
 	$Sprite.visible = false

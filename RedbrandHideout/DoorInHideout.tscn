@@ -17,6 +17,7 @@ extents = Vector2( 15, 23.5 )
 
 [node name="DoorInHideout" type="KinematicBody2D"]
 script = ExtResource( 1 )
+display_name = "a solid wood door"
 
 [node name="Closed" type="Sprite" parent="."]
 texture = ExtResource( 2 )

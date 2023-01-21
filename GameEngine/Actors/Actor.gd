@@ -89,6 +89,8 @@ func died():
 func killed(who:Actor):
 	pass
 
+func has_a(node): return false
+
 func player_is_visible():
 	if $VisionArea.player_is_in_area:
 		var space_rid = get_world_2d().space
