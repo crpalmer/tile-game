@@ -153,11 +153,6 @@ position = Vector2( -226, 478 )
 
 [node name="Orc" parent="." instance=ExtResource( 4 )]
 position = Vector2( 215, -156 )
-gp_dice = {
-"d": 0,
-"n": 0,
-"plus": 0
-}
 
 [node name="Dagger" parent="Orc" instance=ExtResource( 6 )]
 
